@@ -9,7 +9,7 @@
   "commandFiles": [
     ".claude/commands/database-migration.md",
     ".claude/commands/feature-development.md",
-    ".claude/commands/add-or-update-skill-documentation.md"
+    ".claude/commands/add-or-update-skill.md"
   ],
-  "updatedAt": "2026-03-24T10:42:26.738Z"
+  "updatedAt": "2026-03-24T10:43:21.936Z"
 }
