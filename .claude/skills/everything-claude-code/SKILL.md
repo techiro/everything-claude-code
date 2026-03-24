@@ -48,7 +48,7 @@ Follow these commit message conventions based on 500 analyzed commits.
 *Commit message example*
 
 ```text
-feat(ecc2): add split-pane dashboard resizing
+feat: add everything-claude-code ECC bundle (.claude/commands/add-or-update-skill-documentation.md)
 ```
 
 *Commit message example*
@@ -78,19 +78,19 @@ security: remove supply chain risks, external promotions, and unauthorized credi
 *Commit message example*
 
 ```text
-feat: scaffold ECC 2.0 Rust TUI — agentic IDE control plane
+feat: add everything-claude-code ECC bundle (.claude/commands/feature-development.md)
 ```
 
 *Commit message example*
 
 ```text
-feat(skills): add santa-method - multi-agent adversarial verification (#760)
+feat: add everything-claude-code ECC bundle (.claude/commands/database-migration.md)
 ```
 
 *Commit message example*
 
 ```text
-feat: pending instinct TTL pruning and /prune command (#725)
+feat: add everything-claude-code ECC bundle (.claude/enterprise/controls.md)
 ```
 
 ## Architecture
@@ -200,16 +200,16 @@ Database schema changes with migration files
 
 **Example commit sequence**:
 ```
-feat(rules): add C# language support (#704)
-fix: sanitize SessionStart session summaries (#710)
-feat: add MCP health-check hook (#711)
+Add Turkish (tr) docs and update README (#744)
+docs(zh-CN): translate code block(plain text) (#753)
+fix(install): add rust, cpp, csharp to legacy language alias map (#747)
 ```
 
 ### Feature Development
 
 Standard feature implementation workflow
 
-**Frequency**: ~16 times per month
+**Frequency**: ~21 times per month
 
 **Steps**:
 1. Add feature implementation
@@ -223,158 +223,164 @@ Standard feature implementation workflow
 
 **Example commit sequence**:
 ```
-feat: agent description compression with lazy loading (#696)
-feat: add nuxt 4 patterns skill (#702)
-feat(rules): add C# language support (#704)
+docs(pt-BR): add rules translation
+docs(pt-BR): add examples translation
+docs(pt-BR): add commands translation
 ```
 
-### Add Or Update Skill Documentation
+### Add Or Update Skill
 
-Adds a new skill or updates documentation for an existing skill. Typically involves creating or modifying SKILL.md files under skills/ or docs/xx/skills/ directories.
-
-**Frequency**: ~4 times per month
-
-**Steps**:
-1. Create or update SKILL.md under skills/<skill-name>/ or docs/<lang>/skills/<skill-name>/
-2. Optionally update AGENTS.md or README.md to reflect new skill count or catalog
-3. Commit with message referencing the skill and a summary of changes
-
-**Files typically involved**:
-- `skills/*/SKILL.md`
-- `docs/*/skills/*/SKILL.md`
-- `AGENTS.md`
-- `README.md`
-
-**Example commit sequence**:
-```
-Create or update SKILL.md under skills/<skill-name>/ or docs/<lang>/skills/<skill-name>/
-Optionally update AGENTS.md or README.md to reflect new skill count or catalog
-Commit with message referencing the skill and a summary of changes
-```
-
-### Add Or Update Localization
-
-Adds or updates documentation translations for a new or existing language. Involves creating or modifying multiple files under docs/<lang>/, often in bulk.
-
-**Frequency**: ~3 times per month
-
-**Steps**:
-1. Add or update markdown files under docs/<lang>/ for agents, commands, skills, rules, etc.
-2. Update README.md to include the new language or increment language count
-3. Commit with message referencing the language and scope (e.g., pt-BR, zh-CN, tr)
-
-**Files typically involved**:
-- `docs/*/README.md`
-- `docs/*/agents/*.md`
-- `docs/*/commands/*.md`
-- `docs/*/skills/*/SKILL.md`
-- `docs/*/rules/**/*.md`
-- `README.md`
-
-**Example commit sequence**:
-```
-Add or update markdown files under docs/<lang>/ for agents, commands, skills, rules, etc.
-Update README.md to include the new language or increment language count
-Commit with message referencing the language and scope (e.g., pt-BR, zh-CN, tr)
-```
-
-### Add Or Update Hook
-
-Adds a new hook or updates an existing one for agentic workflows. Involves changes to hooks.json and corresponding scripts.
+Adds a new skill or updates an existing skill, including documentation and configuration.
 
 **Frequency**: ~2 times per month
 
 **Steps**:
-1. Add or update entry in hooks/hooks.json
-2. Create or modify corresponding script in scripts/hooks/
-3. Optionally add or update tests in tests/hooks/ or tests/integration/
-4. Commit with message referencing the hook and its purpose
+1. Create or update SKILL.md in the appropriate skills/ directory
+2. Optionally update related documentation or integration files
+
+**Files typically involved**:
+- `skills/*/SKILL.md`
+- `docs/zh-CN/skills/*/SKILL.md`
+- `docs/tr/skills/*/SKILL.md`
+
+**Example commit sequence**:
+```
+Create or update SKILL.md in the appropriate skills/ directory
+Optionally update related documentation or integration files
+```
+
+### Add Or Update Command Doc
+
+Adds or updates documentation for a command, including translations.
+
+**Frequency**: ~3 times per month
+
+**Steps**:
+1. Create or update command documentation in the commands/ directory
+2. Optionally add or update translations in docs/zh-CN/commands/ or docs/tr/commands/
+
+**Files typically involved**:
+- `commands/*.md`
+- `docs/zh-CN/commands/*.md`
+- `docs/tr/commands/*.md`
+- `docs/pt-BR/commands/*.md`
+
+**Example commit sequence**:
+```
+Create or update command documentation in the commands/ directory
+Optionally add or update translations in docs/zh-CN/commands/ or docs/tr/commands/
+```
+
+### Add Or Update Localization
+
+Adds or updates documentation translations for a new or existing language.
+
+**Frequency**: ~2 times per month
+
+**Steps**:
+1. Add or update translated files in docs/{lang}/ directories for agents, commands, skills, rules, etc.
+2. Update README.md to reference the new or updated language
+
+**Files typically involved**:
+- `docs/zh-CN/**/*`
+- `docs/pt-BR/**/*`
+- `docs/tr/**/*`
+- `README.md`
+
+**Example commit sequence**:
+```
+Add or update translated files in docs/{lang}/ directories for agents, commands, skills, rules, etc.
+Update README.md to reference the new or updated language
+```
+
+### Add Or Update Hook
+
+Adds a new agentic hook or updates hook configuration/scripts.
+
+**Frequency**: ~2 times per month
+
+**Steps**:
+1. Edit hooks/hooks.json to add or modify hook definitions
+2. Update or add hook implementation scripts in scripts/hooks/
+3. Optionally update related plugin files (e.g., .opencode/plugins/ecc-hooks.ts)
 
 **Files typically involved**:
 - `hooks/hooks.json`
 - `scripts/hooks/*.js`
-- `tests/hooks/*.test.js`
-- `tests/integration/*.test.js`
+- `.opencode/plugins/*.ts`
 
 **Example commit sequence**:
 ```
-Add or update entry in hooks/hooks.json
-Create or modify corresponding script in scripts/hooks/
-Optionally add or update tests in tests/hooks/ or tests/integration/
-Commit with message referencing the hook and its purpose
+Edit hooks/hooks.json to add or modify hook definitions
+Update or add hook implementation scripts in scripts/hooks/
+Optionally update related plugin files (e.g., .opencode/plugins/ecc-hooks.ts)
 ```
 
-### Add Or Update Session Adapter Feature
+### Add Or Update Session Adapter
 
-Adds or updates features in the session adapter, typically involving implementation, contract documentation, and tests.
+Adds or updates session adapter logic, including contract documentation and tests.
 
-**Frequency**: ~1 times per month
+**Frequency**: ~2 times per month
 
 **Steps**:
-1. Update implementation in scripts/lib/session-adapters/canonical-session.js
-2. Update contract documentation in docs/SESSION-ADAPTER-CONTRACT.md
-3. Add or update corresponding tests in tests/lib/session-adapters.test.js
+1. Edit scripts/lib/session-adapters/*.js for implementation
+2. Update docs/SESSION-ADAPTER-CONTRACT.md for documentation
+3. Update or add tests in tests/lib/session-adapters.test.js
 
 **Files typically involved**:
-- `scripts/lib/session-adapters/canonical-session.js`
+- `scripts/lib/session-adapters/*.js`
 - `docs/SESSION-ADAPTER-CONTRACT.md`
 - `tests/lib/session-adapters.test.js`
 
 **Example commit sequence**:
 ```
-Update implementation in scripts/lib/session-adapters/canonical-session.js
-Update contract documentation in docs/SESSION-ADAPTER-CONTRACT.md
-Add or update corresponding tests in tests/lib/session-adapters.test.js
+Edit scripts/lib/session-adapters/*.js for implementation
+Update docs/SESSION-ADAPTER-CONTRACT.md for documentation
+Update or add tests in tests/lib/session-adapters.test.js
 ```
 
-### Add Or Update Language Support
+### Add Or Update Install Manifest
 
-Adds or updates support for a programming language, including rules, patterns, and install scripts/tests.
+Extends language support or fixes install resolution logic for legacy or new languages.
 
-**Frequency**: ~1 times per month
+**Frequency**: ~2 times per month
 
 **Steps**:
-1. Add or update rules under rules/<language>/ (coding-style.md, hooks.md, patterns.md, security.md, testing.md)
-2. Update scripts/lib/install-manifests.js and manifests/install-components.json for install support
+1. Edit scripts/lib/install-manifests.js for logic
+2. Update manifests/install-components.json for manifest data
 3. Add or update tests in tests/lib/install-manifests.test.js
 
 **Files typically involved**:
-- `rules/*/*.md`
 - `scripts/lib/install-manifests.js`
 - `manifests/install-components.json`
 - `tests/lib/install-manifests.test.js`
 
 **Example commit sequence**:
 ```
-Add or update rules under rules/<language>/ (coding-style.md, hooks.md, patterns.md, security.md, testing.md)
-Update scripts/lib/install-manifests.js and manifests/install-components.json for install support
+Edit scripts/lib/install-manifests.js for logic
+Update manifests/install-components.json for manifest data
 Add or update tests in tests/lib/install-manifests.test.js
 ```
 
-### Codex Config Sync And Merge
+### Add Or Update Ecc Bundle
 
-Synchronizes and merges Codex configuration files, ensuring user content is preserved and ECC-managed sections are updated.
+Adds new ECC bundle files for commands, skills, team config, or research playbooks.
 
-**Frequency**: ~1 times per month
+**Frequency**: ~2 times per month
 
 **Steps**:
-1. Update or create scripts/codex/merge-mcp-config.js or scripts/sync-ecc-to-codex.sh
-2. Update AGENTS.md or .codex/AGENTS.md as needed
-3. Update README.md to reflect server/catalog changes
-4. Commit with message referencing sync/merge and affected files
+1. Create or update files in .claude/commands/, .claude/skills/, .claude/team/, .claude/research/, .claude/rules/, etc.
 
 **Files typically involved**:
-- `scripts/codex/merge-mcp-config.js`
-- `scripts/sync-ecc-to-codex.sh`
-- `.codex/AGENTS.md`
-- `README.md`
+- `.claude/commands/*.md`
+- `.claude/skills/*/SKILL.md`
+- `.claude/team/*.json`
+- `.claude/research/*.md`
+- `.claude/rules/*.md`
 
 **Example commit sequence**:
 ```
-Update or create scripts/codex/merge-mcp-config.js or scripts/sync-ecc-to-codex.sh
-Update AGENTS.md or .codex/AGENTS.md as needed
-Update README.md to reflect server/catalog changes
-Commit with message referencing sync/merge and affected files
+Create or update files in .claude/commands/, .claude/skills/, .claude/team/, .claude/research/, .claude/rules/, etc.
 ```
 
 
