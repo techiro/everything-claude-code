@@ -48,7 +48,7 @@ origin: ECC
 
 ## 出力契約
 
-再利用可能な `VOICE PROFILE` ブロックを生成し、下流のスキルが直接消費できるようにしてください。スキーマは [references/voice-profile-schema.md](references/voice-profile-schema.md) を使用してください。
+再利用可能な `VOICE PROFILE` ブロックを生成し、下流のスキルが直接消費できるようにしてください。スキーマは [references/voice-profile-schema.md](../../../../skills/brand-voice/references/voice-profile-schema.md) を使用してください。
 
 プロファイルは構造化され、セッションコンテキストで再利用できる程度に短く保ってください。目的は文学批評ではなく、運用上の再利用です。
 

@@ -2,6 +2,8 @@
 
 # Everything Claude Code
 
+![Everything Claude Code — AI エージェントハーネス向けパフォーマンスシステム](../../assets/hero.png)
+
 [![Stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/stargazers)
 [![Forks](https://img.shields.io/github/forks/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/network/members)
 [![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/graphs/contributors)
@@ -188,7 +190,11 @@ ECC は現在 3 つの公開識別子を持ち、互換性はありません。
 
 ### ステップ 2：ルールをインストール（必須）
 
-> WARNING: **重要：** Claude Code プラグインは `rules` を自動配布できません。手動でインストールしてください。
+> WARNING: **重要：** Claude Code プラグインは `rules` を自動配布できません。
+>
+> 既に `/plugin install` で ECC をインストール済みの場合は、**その後に `./install.sh --profile full`、`.\install.ps1 --profile full`、`npx ecc-install --profile full` を実行しないでください**。プラグインは既に ECC のスキル、コマンド、フックを読み込んでいます。プラグインインストール後に full インストーラを実行すると、同じサーフェスがユーザーディレクトリに二重にコピーされ、スキルの重複とランタイム動作の重複が発生する可能性があります。
+>
+> プラグインインストールの場合は、欲しい `rules/` ディレクトリのみを手動でコピーしてください。プラグイン経路ではなく完全な手動 ECC インストールを行う場合にのみ full インストーラを使用してください。
 >
 > ローカルの Claude セットアップが消去・リセットされた場合でも ECC を再購入する必要はありません。まず `ecc list-installed` を実行し、その後 `ecc doctor` と `ecc repair` を実行してから再インストールを検討してください。これで通常は ECC 管理のファイルを再構築せずに復旧します。ECC Tools のアカウントやマーケットプレイスアクセスの問題は、別途請求/アカウント復旧で対応してください。
 
@@ -200,34 +206,26 @@ cd everything-claude-code
 # 依存関係をインストール（お好みのパッケージマネージャを選択）
 npm install        # または: pnpm install | yarn install | bun install
 
-# macOS/Linux
+# プラグインインストール経路：ルールのみコピー
+mkdir -p ~/.claude/rules
+cp -R rules/common ~/.claude/rules/
+cp -R rules/typescript ~/.claude/rules/
 
-# 推奨：全てインストール（full プロファイル）
-./install.sh --profile full
-
-# または特定言語のみインストール
-./install.sh typescript    # python、golang、swift、php なども可
-# ./install.sh typescript python golang swift php
-# ./install.sh --target cursor typescript
-# ./install.sh --target antigravity typescript
-# ./install.sh --target gemini --profile full
+# 完全な手動 ECC インストール経路（/plugin install の代わりにこちらを使用）
+# ./install.sh --profile full
 ```
 
 ```powershell
 # Windows PowerShell
 
-# 推奨：全てインストール（full プロファイル）
-.\install.ps1 --profile full
+# プラグインインストール経路：ルールのみコピー
+New-Item -ItemType Directory -Force -Path "$HOME/.claude/rules" | Out-Null
+Copy-Item -Recurse rules/common "$HOME/.claude/rules/"
+Copy-Item -Recurse rules/typescript "$HOME/.claude/rules/"
 
-# または特定言語のみインストール
-.\install.ps1 typescript   # python、golang、swift、php なども可
-# .\install.ps1 typescript python golang swift php
-# .\install.ps1 --target cursor typescript
-# .\install.ps1 --target antigravity typescript
-# .\install.ps1 --target gemini --profile full
-
-# npm でインストールした互換エントリポイントはクロスプラットフォーム対応
-npx ecc-install typescript
+# 完全な手動 ECC インストール経路（/plugin install の代わりにこちらを使用）
+# .\install.ps1 --profile full
+# npx ecc-install --profile full
 ```
 
 手動インストールの詳細は `rules/` フォルダ内の README を参照してください。ルールを手動コピーする場合は、ディレクトリ内のファイルではなく言語ディレクトリ全体（例：`rules/common` や `rules/golang`）をコピーし、相対参照が機能しファイル名衝突を避けられるようにしてください。

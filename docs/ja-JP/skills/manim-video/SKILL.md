@@ -64,7 +64,7 @@ origin: ECC
 
 ## 再利用可能なスターター
 
-ネットワークグラフ解説のスタート地点として [assets/network_graph_scene.py](assets/network_graph_scene.py) を使用してください。
+ネットワークグラフ解説のスタート地点として [assets/network_graph_scene.py](../../../../skills/manim-video/assets/network_graph_scene.py) を使用してください。
 
 スモークテスト例：
 
